@@ -92,9 +92,7 @@ footer
     -webkit-overflow-scrolling: touch;
 }
 
-.main{
- 	margin:50px 15px;
-}
+
 
 h1.title { 
 	font-size: 50px;
@@ -188,4 +186,13 @@ span.input-group-addon i {
 .login-register{
 	font-size: 11px;
 	text-align: center;
+}
+
+/*
+* Menu vertical
+*/
+
+.fa-fw 
+{
+	width: 2em;
 }

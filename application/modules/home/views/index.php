@@ -5,11 +5,11 @@
 				<div class="col-md-3">
 					<div class="wrapper">
 						<div class="row">
-							<a href="#">
+							<a href="<?php echo site_url('employe/'); ?>">
 								<div class="col-sm-12">										
-									  <img class="img-responsive" src="<?php echo site_url('assets/img/caption.png'); ?>" alt="...">
+									  <img class="img-responsive" src="<?php echo site_url('assets/img/employe.png'); ?>" alt="...">
 										<div class="desc">
-											<p class="desc_content text-center"><b>Modules</b></p>
+											<p class="desc_content text-center"><b>Gestion des employés</b></p>
 										</div>
 								</div>
 							</a>
@@ -22,9 +22,9 @@
 						<div class="row">
 							<a href="#">
 								<div class="col-sm-12">										
-									  <img class="img-responsive" src="<?php echo site_url('assets/img/caption2.png'); ?>" alt="...">
+									  <img class="img-responsive" src="<?php echo site_url('assets/img/produit.png'); ?>" alt="...">
 										<div class="desc">
-											<p class="desc_content text-center"><b>Modules</b></p>
+											<p class="desc_content text-center"><b>Gestion des produits</b></p>
 										</div>
 								</div>
 							</a>
@@ -37,9 +37,9 @@
 						<div class="row">
 							<a href="#">
 								<div class="col-sm-12">										
-									  <img class="img-responsive" src="<?php echo site_url('assets/img/caption3.png'); ?>" alt="...">
+									  <img class="img-responsive" src="<?php echo site_url('assets/img/stagiaire.png'); ?>" alt="...">
 										<div class="desc">
-											<p class="desc_content text-center"><b>Modules</b></p>
+											<p class="desc_content text-center"><b>Gestion des stagiaires</b></p>
 										</div>
 								</div>
 							</a>
@@ -52,9 +52,9 @@
 						<div class="row">
 							<a href="#">
 								<div class="col-sm-12">										
-									  <img class="img-responsive" src="<?php echo site_url('assets/img/caption4.png'); ?>" alt="...">
+									  <img class="img-responsive" src="<?php echo site_url('assets/img/user.png'); ?>" alt="...">
 										<div class="desc">
-											<p class="desc_content text-center"><b>Modules</b></p>
+											<p class="desc_content text-center"><b>Gestion des utilisateurs</b></p>
 										</div>
 								</div>
 							</a>
