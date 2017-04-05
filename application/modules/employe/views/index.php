@@ -27,7 +27,46 @@
 				</div>
 				
 				<div class="col-md-9">
-					<p> Ceci est un exemple </p>
+					<center><h3> Liste des employés </h3></center>
+					<hr>
+					<br>
+					
+					
+					<?php if(!empty($liste_employé)):?>
+						<table class="table table-striped table-condensed table-bordered table-responsive" id = 'myDatatable'>
+						  <thead>
+						  <tr>
+								<td>Nom</td>
+								<td>Prénom</td>
+								<td>Adresse</td>
+								<td>Telephone</td>
+								<td>Poste</td>
+								<td>Action</td>
+							</tr>
+						</thead>
+							<?php foreach($liste_employé as $l): ?>
+							<tr>
+								<td><?php echo $l->employe_nom; ?></td>
+								<td><?php echo $l->employe_prenom; ?></td>
+								<td><?php echo $l->employe_adresse; ?></td>
+								<td><?php echo $l->employe_tel; ?></td>
+								<td><?php echo $l->employe_poste; ?></td>
+								<td>
+									
+										<a href="#" class="btn  btn-sm btn-info"><i class = "glyphicon glyphicon-edit"></i> Modifier</a>
+									
+										<a href="#" onClick = "return confirm('Etes-vous sûr de vouloir supprimer cette donnée ?')" class="btn btn-sm btn-danger"><i class = "glyphicon glyphicon-trash"></i> Supprimer</a>
+									
+										<a href="#" class="btn  btn-sm btn-success"><i class = "glyphicon glyphicon-edit"></i> Détails</a>
+								</td>
+							</tr>
+							<?php endforeach; ?>
+						</table>
+					<?php else:?>
+						<p class = "alert alert-info">Aucune donnée disponible pour le moment</p>
+					<?php endif;?>
+					
+					
 				</div>
 				
 			</div>

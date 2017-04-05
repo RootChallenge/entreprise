@@ -40,14 +40,14 @@
 							<div class="col-md-12">
 								<div class="main-login main-center">
 								<h5>Renseignez les informations de l'employé</h5>
-									<form class="" method="post" action="#">
+									<?php echo form_open('', array('class' => ''));?>
 										
 										<div class="form-group">
 											<label for="name" class="cols-sm-2 control-label">Nom</label>
 											<div class="cols-sm-10">
 												<div class="input-group">
 													<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-													<input type="text" class="form-control" name="name" id="name"  placeholder="Nom de l'employé"/>
+													<input type="text" class="form-control" name="nom" id="nom"  placeholder="Nom de l'employé"/>
 												</div>
 											</div>
 										</div>
@@ -57,7 +57,7 @@
 											<div class="cols-sm-10">
 												<div class="input-group">
 													<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-													<input type="text" class="form-control" name="email" id="email"  placeholder="Prénom de l'employé"/>
+													<input type="text" class="form-control" name="prenom" id="prenom"  placeholder="Prénom de l'employé"/>
 												</div>
 											</div>
 										</div>
@@ -67,7 +67,7 @@
 											<div class="cols-sm-10">
 												<div class="input-group">
 													<span class="input-group-addon"><i class="fa fa-home fa" aria-hidden="true"></i></span>
-													<input type="text" class="form-control" name="username" id="username"  placeholder="Adresse de l'employé"/>
+													<input type="text" class="form-control" name="adresse" id="adresse"  placeholder="Adresse de l'employé"/>
 												</div>
 											</div>
 										</div>
@@ -77,7 +77,7 @@
 											<div class="cols-sm-10">
 												<div class="input-group">
 													<span class="input-group-addon"><i class="fa fa-phone fa-lg" aria-hidden="true"></i></span>
-													<input type="password" class="form-control" name="password" id="password"  placeholder="Téléphone de l'employé"/>
+													<input type="text" class="form-control" name="telephone" id="telephone"  placeholder="Téléphone de l'employé"/>
 												</div>
 											</div>
 										</div>
@@ -87,7 +87,7 @@
 											<div class="cols-sm-10">
 												<div class="input-group">
 													<span class="input-group-addon"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></span>
-													<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Email de l'employé"/>
+													<input type="email" class="form-control" name="email" id="email"  placeholder="Email de l'employé"/>
 												</div>
 											</div>
 										</div>
@@ -97,16 +97,17 @@
 											<div class="cols-sm-10">
 												<div class="input-group">
 													<span class="input-group-addon"><i class="fa fa-user fa-lg" aria-hidden="true"></i></span>
-													<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Poste de l'employé"/>
+													<input type="text" class="form-control" name="poste" id="poste"  placeholder="Poste de l'employé"/>
 												</div>
 											</div>
 										</div>
 
 										<div class="form-group ">
-											<a href="http://deepak646.blogspot.in" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Valider</a>
+											<input type="submit" value="Valider" name="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">
 										</div>
 										
-									</form>
+									
+								<?php echo form_close();?>
 								</div>
 							</div>
 						</div><!-- Fin row main -->
