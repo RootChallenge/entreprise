@@ -1,0 +1,83 @@
+/*
+********************************
+
+Couleur primaire : #3fa5db;
+
+********************************
+*/
+
+
+/*
+* Bloc principale de l'application
+*/
+body
+{
+	margin-top : 50px;
+	margin-bottom : 50px;
+}
+
+.contenu
+{
+	border : 2px solid #3fa5db;
+	border-radius : 5px;
+	padding : 2%;
+}
+
+
+/*
+*	Header de l'application
+*/
+
+.header
+{
+	background-color : #3fa5db;
+	border-radius : 2px;
+}
+
+.header a
+{
+	color : #fff;
+}
+
+.header a:hover
+{
+	color : red;
+}
+
+
+/*
+*	Page d'accueil
+*/
+.desc{
+    position: absolute;
+    bottom: 0;
+    background-color: red;
+    color: #fff;
+    opacity: 0.5;
+    left:0;   /** new  **/
+    right:0;  /** new  **/	
+    filter: alpha(opacity=50);
+}
+
+.wrapper{
+    float: left;
+    position: relative;
+    margin: 10px;
+ }
+ 
+.desc_content
+{
+	color: white;
+}
+
+
+/*
+*	Footer de l'application
+*/
+
+footer
+{
+	height : 25px;
+	background-color : #3fa5db;
+	color : #fff;
+}

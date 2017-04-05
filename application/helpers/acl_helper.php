@@ -1,0 +1,103 @@
+<?php
+	if(!function_exists('has_access')){
+		function has_access($name){
+			$access = is_allowed($name);
+			$obj = & get_instance();
+			if(!$access){
+				$obj->session->set_flashdata('error', 'Vous n\'avez pas les permissions nécessaires pour acceder à cette page');
+				redirect(base_url());
+			}
+
+		}
+	}
+
+	if(!function_exists('is_allowed')){
+		function is_allowed($name){
+			check();
+			$access = false;
+			$obj = & get_instance();
+			$session = $obj->session->userdata('users');
+			$obj->load->model('Users_model');
+			$permissions = $obj->Users_model->get_all_permissions($session->users_id);
+			foreach($permissions as $permission){
+				if(isset($permission[$name]) && $permission[$name] == 1){
+					$access = true;
+					break;
+				}
+			}
+			return $access;
+		}
+	}
+
+
+	if(!function_exists('get_permission_label')){
+		function get_permission_label($name, $default = null){
+			$permissions = get_all_permissions();
+			return isset($permissions[$name])?$permissions[$name]:$default;
+
+		}
+	}
+
+
+	if(!function_exists('get_all_permissions')){
+		function get_all_permissions(){
+			$permissions = array(
+									'user' => 'Gestion des utilisateurs',
+									'group' => 'Gestion des groupes utilisateurs',
+									'facture' => 'Gestion des caisses & factures',
+									'client_carte' => 'Gestion des cartes d\'abonnement',
+
+									'config' => 'Afficher menu de configuration',
+									'config_generale' => 'Configuration de l\'application',
+									'config_mode_reglement' => 'Configuration de mode de reglement',
+									'config_categorie_client' => 'Configuration des catégories client',
+									'config_categorie_produit' => 'Configuration des catégories produit',
+
+									'config_devise' => 'Configuration des devises',
+
+
+									'vente' => 'Effectuer de vente',
+									'depense' => 'Effectuer des dépenses',
+									'edit_depense' => 'Modifier des dépenses',
+									'delete_depense' => 'Supprimer des dépenses',
+
+
+									'view_etat' => 'Afficher menu état de caisse',
+									'view_etat_depense' => 'Afficher état des dépenses',
+									'view_etat_recette' => 'Afficher état des recettes',
+									'view_etat_solde' => 'Afficher état des soldes',
+
+
+									'view_produit' => 'Afficher la liste des produits',
+									'add_produit' => 'Créer un nouveau produit',
+									'edit_produit' => 'Modifier un produit',
+									'delete_produit' => 'Supprimer un produit',
+
+									'view_client' => 'Afficher la liste des clients',
+									'add_client' => 'Créer un nouveau client',
+									'edit_client' => 'Modifier un client',
+									'delete_client' => 'Supprimer un client',
+
+								);
+			return $permissions;
+		}
+	}
+
+
+	if(!function_exists('check')){
+		function check(){
+			$isLogin = false;
+			$obj = & get_instance();
+			$users = $obj->session->userdata('users');
+			$isLogin = !empty($users)
+			&& isset($users->users_username)
+			&& isset($users->users_id)
+			&& isset($users->users_email);
+
+			if(!$isLogin){
+				$obj->session->set_flashdata('info', 'Vous devez vous connecter pour acceder à cette page');
+				redirect('users/login');
+			}
+		}
+	}
+?>
