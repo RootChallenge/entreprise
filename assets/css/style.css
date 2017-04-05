@@ -55,7 +55,7 @@ body
     color: #fff;
     opacity: 0.5;
     left:0;   /** new  **/
-    right:0;  /** new  **/	
+    right:0;  /** new  **/
     filter: alpha(opacity=50);
 }
 
@@ -64,7 +64,7 @@ body
     position: relative;
     margin: 10px;
  }
- 
+
 .desc_content
 {
 	color: white;
@@ -77,9 +77,9 @@ body
 
 footer
 {
-	height : 25px;
 	background-color : #3fa5db;
 	color : #fff;
+	padding : 8px;
 }
 
 /*
@@ -94,10 +94,10 @@ footer
 
 
 
-h1.title { 
+h1.title {
 	font-size: 50px;
-	font-family: 'Passion One', cursive; 
-	font-weight: 400; 
+	font-family: 'Passion One', cursive;
+	font-weight: 400;
 }
 
 hr{
@@ -188,6 +188,7 @@ span.input-group-addon i {
 	text-align: center;
 }
 
+<<<<<<< HEAD
 /*
 * Menu vertical
 */
@@ -195,4 +196,74 @@ span.input-group-addon i {
 .fa-fw 
 {
 	width: 2em;
+=======
+
+
+.error{
+	color : #f00;
+	text-align : center;
+}
+
+.alert{
+	text-align : center;
+	width : 60%;
+	margin : 0.4% auto;
+}
+
+
+th, td, tr{
+	text-align : center;
+}
+
+.page-header{
+	text-align : center;
+}
+
+/************************ pour les boutons switch ***************************************/
+
+
+.btn-switch > input[type="checkbox"] {
+    display: none;
+}
+
+.btn-switch > label {
+    cursor: pointer;
+    height: 0px;
+    position: relative;
+    width: 40px;
+}
+
+.btn-switch > label::before {
+    background: rgb(0, 0, 0);
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    content: '';
+    height: 16px;
+    margin-top: -8px;
+    position:absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 40px;
+}
+.btn-switch > label::after {
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    content: '';
+    height: 24px;
+    left: -4px;
+    margin-top: -8px;
+    position: absolute;
+    top: -4px;
+    transition: all 0.3s ease-in-out;
+    width: 24px;
+}
+.btn-switch > input[type="checkbox"]:checked + label::before {
+    background: inherit;
+    opacity: 0.5;
+}
+.btn-switch > input[type="checkbox"]:checked + label::after {
+    background: inherit;
+    left: 20px;
+>>>>>>> 99df57a0da7f1a46c52318dd5768fbb326cb232b
 }

@@ -1,80 +1,22 @@
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<center>
-				<ol class="breadcrumb">
-				  <li><a href="<?php echo base_url(); ?>">Accueil</a></li>
-				  <li class="active">Connexion</li>
-				</ol>
-			</center><br>
-			
-			<div class="container">
-				<div class="row main">
-				<div class="col-md-offset-3 col-md-6 col-md-offset-3">
-					<div class="main-login main-center">
-					<h5>Sign up once and watch any of our free demos.</h5>
-						<form class="" method="post" action="#">
-							
-							<div class="form-group">
-								<label for="name" class="cols-sm-2 control-label">Your Name</label>
-								<div class="cols-sm-10">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-										<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="email" class="cols-sm-2 control-label">Your Email</label>
-								<div class="cols-sm-10">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-										<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="username" class="cols-sm-2 control-label">Username</label>
-								<div class="cols-sm-10">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-										<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="password" class="cols-sm-2 control-label">Password</label>
-								<div class="cols-sm-10">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-										<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-								<div class="cols-sm-10">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-										<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group ">
-								<a href="http://deepak646.blogspot.in" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Register</a>
-							</div>
-							
-						</form>
-					</div>
-				</div>
-				</div>
-		</div>
-			
-		</div>
+<div class = "row">
+	<div class = "col-md-offset-4 col-md-4 col-md-offset-4">
+		<?php echo form_open('', array('class' => 'well'));?>
+			<?php echo form_fieldset('Veuillez vous authentifier');?>
+			<div class = "form-group">
+				<?php echo form_label('Nom d\'utilisateur :', 'users_username');?>
+				<?php echo form_input('users_username', set_value('users_username'), array('class' => "form-control tooltip-input", 'required' => true, 'placeholder' => 'Nom d\'utilisateur', 'title' => 'Veuillez saisir votre nom d\'utilisateur'));?>
+				<?php echo form_error('users_username');?>
+			</div>
+			<div class = "form-group">
+				<?php echo form_label('Mot de passe :', 'users_password');?>
+				<?php echo form_password('users_password', null, array('class' => "form-control tooltip-input",  'required' => true, 'placeholder' => 'Mot de passe', 'title' => 'Veuillez saisir votre mot de passe personnel'));?>
+				<?php echo form_error('users_password');?>
+			</div>
+			<div class = "form-group">
+				<?php echo form_submit('submit', 'Valider', array('class' => 'btn btn-primary btn-block'));?>
+			</div>
+			<p>Vous avez oublié votre <a href = "<?php echo site_url('users/reset_password');?>">mot de passe ?</a></p>
+			<?php echo form_fieldset_close();?>
+		<?php echo form_close();?>
 	</div>
 </div>

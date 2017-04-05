@@ -44,40 +44,7 @@
 			$permissions = array(
 									'user' => 'Gestion des utilisateurs',
 									'group' => 'Gestion des groupes utilisateurs',
-									'facture' => 'Gestion des caisses & factures',
-									'client_carte' => 'Gestion des cartes d\'abonnement',
-
-									'config' => 'Afficher menu de configuration',
-									'config_generale' => 'Configuration de l\'application',
-									'config_mode_reglement' => 'Configuration de mode de reglement',
-									'config_categorie_client' => 'Configuration des catégories client',
-									'config_categorie_produit' => 'Configuration des catégories produit',
-
-									'config_devise' => 'Configuration des devises',
-
-
-									'vente' => 'Effectuer de vente',
-									'depense' => 'Effectuer des dépenses',
-									'edit_depense' => 'Modifier des dépenses',
-									'delete_depense' => 'Supprimer des dépenses',
-
-
-									'view_etat' => 'Afficher menu état de caisse',
-									'view_etat_depense' => 'Afficher état des dépenses',
-									'view_etat_recette' => 'Afficher état des recettes',
-									'view_etat_solde' => 'Afficher état des soldes',
-
-
-									'view_produit' => 'Afficher la liste des produits',
-									'add_produit' => 'Créer un nouveau produit',
-									'edit_produit' => 'Modifier un produit',
-									'delete_produit' => 'Supprimer un produit',
-
-									'view_client' => 'Afficher la liste des clients',
-									'add_client' => 'Créer un nouveau client',
-									'edit_client' => 'Modifier un client',
-									'delete_client' => 'Supprimer un client',
-
+								
 								);
 			return $permissions;
 		}
