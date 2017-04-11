@@ -66,6 +66,59 @@
 				
 			}
 		}
+		
+		public function update($produit_id)
+		{
+			$produit= $this->Produit_model->get_by('produit_id', $produit_id);
+			
+			if($produit)
+			{
+				$this->load->library('form_validation');			
+				$this->form_validation->set_error_delimiters('<p class = "error">', '</p>');
+				$this->form_validation->set_rules('produit_nom', 'Nom du produit', 'trim|required');
+				$this->form_validation->set_rules('produit_prix', 'Prix du Produit', 'trim|required');
+				$this->form_validation->set_rules('categorie_produit_id', 'Catégorie du produit', 'trim|required');
+				
+				$data['liste_produit'] = $this->Produit_model->get_by('produit_id', $produit_id);			
+				$data['liste_categorie'] = $this->Categorie_produit_model->get_all();			
+				if($this->form_validation->run() === FALSE)
+				{
+					$this->load->view('header');
+					$this->load->view('produit/update', $data);
+					$this->load->view('footer');
+				}
+				
+				else
+				{
+					$produit_nom= $this->input->post('produit_nom');
+					$produit_prix= $this->input->post('produit_prix');
+					$categorie_produit_id=$this->input->post('categorie_produit_id');
+					
+					$params = array('produit_nom'=>$produit_nom,
+									'produit_prix'=>$produit_prix,
+									'categorie_produit_id'=>$categorie_produit_id);
+									
+					$produit2= $this->Produit_model->update($produit_id, $params);
+					
+					if($produit2)
+					{
+						$this->session->set_flashdata('success','La modification a été éffectué avec succès');
+							redirect('produit');
+					}
+					else
+					{
+						$this->session->set_flashdata('error','Une erreur est survenue lors de la modification ');
+							redirect('produit');
+					}
+				}
+			}
+			else
+			{
+				show_error('The data you are trying to delete does not exist.');
+			}
+		}
+		
+		
 		public function remove($produit_id)
 		{
 			$produit = $this->Produit_model->get($produit_id);
