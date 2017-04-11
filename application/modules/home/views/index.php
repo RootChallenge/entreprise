@@ -20,7 +20,7 @@
 				<div class="col-md-3">
 					<div class="wrapper">
 						<div class="row">
-							<a href="#">
+							<a href="<?php echo site_url('produit/');?>">
 								<div class="col-sm-12">										
 									  <img class="img-responsive" src="<?php echo site_url('assets/img/produit.png'); ?>" alt="...">
 										<div class="desc">
