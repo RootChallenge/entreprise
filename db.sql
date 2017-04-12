@@ -1,26 +1,70 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Client :  127.0.0.1
+-- Généré le :  Mer 12 Avril 2017 à 12:19
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
--- Export de la structure de la base pour entreprise
-DROP DATABASE IF EXISTS `entreprise`;
-CREATE DATABASE IF NOT EXISTS `entreprise` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `entreprise`;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
+--
+-- Base de données :  `entreprise`
+--
 
--- Export de la structure de table entreprise. categorie_produit
-DROP TABLE IF EXISTS `categorie_produit`;
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie_conge`
+--
+
+CREATE TABLE IF NOT EXISTS `categorie_conge` (
+  `categorie_conge_id` int(11) NOT NULL,
+  `categorie_conge_nom` varchar(255) NOT NULL,
+  `categorie_conge_duree` varchar(255) NOT NULL,
+  PRIMARY KEY (`categorie_conge_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie_produit`
+--
+
 CREATE TABLE IF NOT EXISTS `categorie_produit` (
   `categorie_produit_id` int(11) NOT NULL AUTO_INCREMENT,
   `categorie_produit_nom` varchar(255) NOT NULL,
   PRIMARY KEY (`categorie_produit_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- Export de données de la table entreprise.categorie_produit : ~0 rows (environ)
-/*!40000 ALTER TABLE `categorie_produit` DISABLE KEYS */;
-/*!40000 ALTER TABLE `categorie_produit` ENABLE KEYS */;
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `conge`
+--
 
--- Export de la structure de table entreprise. employe
-DROP TABLE IF EXISTS `employe`;
+CREATE TABLE IF NOT EXISTS `conge` (
+  `conge_id` int(11) NOT NULL AUTO_INCREMENT,
+  `conge_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `categorie_conge_id` int(11) NOT NULL,
+  `employe_id` int(11) NOT NULL,
+  PRIMARY KEY (`conge_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `employe`
+--
+
 CREATE TABLE IF NOT EXISTS `employe` (
   `employe_id` int(11) NOT NULL AUTO_INCREMENT,
   `employe_nom` varchar(255) NOT NULL,
@@ -29,35 +73,53 @@ CREATE TABLE IF NOT EXISTS `employe` (
   `employe_tel` varchar(15) NOT NULL,
   `employe_email` varchar(255) NOT NULL,
   `employe_poste` varchar(255) NOT NULL,
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`employe_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
--- Export de données de la table entreprise.employe : ~0 rows (environ)
-/*!40000 ALTER TABLE `employe` DISABLE KEYS */;
-/*!40000 ALTER TABLE `employe` ENABLE KEYS */;
+--
+-- Contenu de la table `employe`
+--
 
+INSERT INTO `employe` (`employe_id`, `employe_nom`, `employe_prenom`, `employe_adresse`, `employe_tel`, `employe_email`, `employe_poste`, `create_at`) VALUES
+(1, 'KPONTON', 'Auguste', 'Lakouanga', '72683230', 'kpontonauguste@gmail.com', 'Développeur web', '2017-04-05 10:28:41');
 
--- Export de la structure de table entreprise. group
-DROP TABLE IF EXISTS `group`;
-CREATE TABLE IF NOT EXISTS `group` (
-  `group_id` int(11) NOT NULL AUTO_INCREMENT,
-  `group_name` varchar(255) NOT NULL,
-  `is_system` tinyint(4) NOT NULL DEFAULT '0',
-  `user` tinyint(4) NOT NULL DEFAULT '0',
-  `group` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
 
--- Export de données de la table entreprise.group : ~2 rows (environ)
-/*!40000 ALTER TABLE `group` DISABLE KEYS */;
-INSERT INTO `group` (`group_id`, `group_name`, `is_system`, `user`, `group`) VALUES
-	(1, 'default', 1, 0, 0),
-	(2, 'administrateur', 0, 1, 1);
-/*!40000 ALTER TABLE `group` ENABLE KEYS */;
+--
+-- Structure de la table `enregistrement`
+--
 
+CREATE TABLE IF NOT EXISTS `enregistrement` (
+  `enregistrement_id` int(11) NOT NULL AUTO_INCREMENT,
+  `enregistrement_etat` int(1) NOT NULL,
+  `enregistrement_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `employe_id` int(11) NOT NULL,
+  PRIMARY KEY (`enregistrement_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- Export de la structure de table entreprise. produit
-DROP TABLE IF EXISTS `produit`;
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `paiement`
+--
+
+CREATE TABLE IF NOT EXISTS `paiement` (
+  `paiement_id` int(11) NOT NULL AUTO_INCREMENT,
+  `paiement_montant` varchar(255) NOT NULL,
+  `paiement_motif` varchar(255) NOT NULL,
+  `paiement_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `paiement_prime` varchar(255) DEFAULT NULL,
+  `employe_id` int(11) NOT NULL,
+  PRIMARY KEY (`paiement_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produit`
+--
+
 CREATE TABLE IF NOT EXISTS `produit` (
   `produit_id` int(11) NOT NULL AUTO_INCREMENT,
   `produit_nom` varchar(255) NOT NULL,
@@ -65,30 +127,28 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `categorie_produit_id` int(11) NOT NULL,
   PRIMARY KEY (`produit_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- Export de données de la table entreprise.produit : ~0 rows (environ)
-/*!40000 ALTER TABLE `produit` DISABLE KEYS */;
-/*!40000 ALTER TABLE `produit` ENABLE KEYS */;
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `rapport`
+--
 
--- Export de la structure de table entreprise. rapport
-DROP TABLE IF EXISTS `rapport`;
 CREATE TABLE IF NOT EXISTS `rapport` (
   `rapport_id` int(11) NOT NULL AUTO_INCREMENT,
   `rapport_titre` varchar(255) NOT NULL,
   `rapport_commentaire` text,
   `rapport_fichier` varchar(255) NOT NULL,
   PRIMARY KEY (`rapport_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- Export de données de la table entreprise.rapport : ~0 rows (environ)
-/*!40000 ALTER TABLE `rapport` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rapport` ENABLE KEYS */;
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `stagiaire`
+--
 
--- Export de la structure de table entreprise. stagiaire
-DROP TABLE IF EXISTS `stagiaire`;
 CREATE TABLE IF NOT EXISTS `stagiaire` (
   `stagiaire_id` int(11) NOT NULL AUTO_INCREMENT,
   `stagiaire_nom` varchar(255) NOT NULL,
@@ -97,15 +157,14 @@ CREATE TABLE IF NOT EXISTS `stagiaire` (
   `stagiaire_email` varchar(255) NOT NULL,
   `stagiaire_adresse` varchar(255) NOT NULL,
   PRIMARY KEY (`stagiaire_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
--- Export de données de la table entreprise.stagiaire : ~0 rows (environ)
-/*!40000 ALTER TABLE `stagiaire` DISABLE KEYS */;
-/*!40000 ALTER TABLE `stagiaire` ENABLE KEYS */;
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `users`
+--
 
--- Export de la structure de table entreprise. users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `users_id` int(11) NOT NULL AUTO_INCREMENT,
   `users_username` varchar(255) NOT NULL,
@@ -113,29 +172,23 @@ CREATE TABLE IF NOT EXISTS `users` (
   `users_nom` varchar(255) NOT NULL,
   `users_prenom` varchar(255) NOT NULL,
   `users_email` varchar(255) NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`users_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- Export de données de la table entreprise.users : ~1 rows (environ)
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`users_id`, `users_username`, `users_password`, `users_nom`, `users_prenom`, `users_email`, `create_at`) VALUES
-	(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'NGUEREZA', 'Tony', 'nguerezatony@gmail.com', '2016-11-11 07:54:38');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `users_group`
+--
 
--- Export de la structure de table entreprise. users_group
-DROP TABLE IF EXISTS `users_group`;
 CREATE TABLE IF NOT EXISTS `users_group` (
   `users_group_id` int(11) NOT NULL AUTO_INCREMENT,
-  `users_id` int(11) NOT NULL DEFAULT '0',
+  `users_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   PRIMARY KEY (`users_group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- Export de données de la table entreprise.users_group : ~1 rows (environ)
-/*!40000 ALTER TABLE `users_group` DISABLE KEYS */;
-INSERT INTO `users_group` (`users_group_id`, `users_id`, `group_id`) VALUES
-	(1, 1, 2);
-
-	
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
