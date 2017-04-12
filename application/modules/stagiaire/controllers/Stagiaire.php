@@ -26,7 +26,7 @@
 			
 			$this->form_validation->set_rules('stagiaire_nom', 'nom du stagiaire', 'trim|required');
 			$this->form_validation->set_rules('stagiaire_prenom', 'prénom ', 'trim|required');
-			$this->form_validation->set_rules('stagiaire_tel', 'téléphone', 'trim|required|');
+			$this->form_validation->set_rules('stagiaire_tel', 'téléphone', 'trim|required');
 			$this->form_validation->set_rules('stagiaire_email', 'email du stagiaire', 'trim|required');
 			$this->form_validation->set_rules('stagiaire_adresse', 'adresse ', 'trim|required');
 			if($this->form_validation->run() === FALSE)
@@ -42,7 +42,23 @@
 				$stagiaire_tel = ($this->input->post('stagiaire_tel'));
 				$stagiaire_email = ($this->input->post('stagiaire_email'));
 				$stagiaire_adresse = ($this->input->post('stagiaire_adresse'));
-				$params = array(
+				$tabs = array(
+								'stagiaire_nom' => $stagiaire_nom,
+								'stagiaire_prenom' => $stagiaire_prenom,
+								'stagiaire_tel' => $stagiaire_tel,
+								'stagiaire_email' => $stagiaire_email,
+								'stagiaire_adresse' => $stagiaire_adresse,
+								
+				 );
+				 $stagiaire2= $this->Stagiaire_model->get_by($tabs);
+				 if($stagiaire2)
+				 {
+					$this->session->set_flashdata('error', 'Ce stagiaire existe déjà');
+					   redirect('stagiaire');
+				 }
+				 else
+				 {
+					$params = array(
 								'stagiaire_nom' => $stagiaire_nom,
 								'stagiaire_prenom' => $stagiaire_prenom,
 								'stagiaire_tel' => $stagiaire_tel,
@@ -64,6 +80,8 @@
 					   $this->session->set_flashdata('error', 'Une erreur est survenue lors de l\'ajout du stagiaire');
 					   redirect('stagiaire');
 				 }
+				 }
+				 
 			}
 	}
 	
