@@ -67,6 +67,20 @@
 				<div class="col-md-3">
 					<div class="wrapper">
 						<div class="row">
+							<a href="<?php echo site_url('paiement'); ?>">
+								<div class="col-sm-12">
+									  <img class="img-responsive" src="<?php echo site_url('assets/img/paiement.png'); ?>" alt="...">
+										<div class="desc">
+											<p class="desc_content text-center"><b>Gestion paiement</b></p>
+										</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="wrapper">
+						<div class="row">
 							<a href="#">
 								<div class="col-sm-12">
 									  <img class="img-responsive" src="<?php echo site_url('assets/img/configuration.png'); ?>" alt="...">
@@ -78,8 +92,6 @@
 						</div>
 					</div>
 				</div>
-
-
 			</div><!-- Fin 2e row -->
 
 		</div>
