@@ -1,7 +1,7 @@
 <div class = "row">
 	<div class = "col-md-offset-4 col-md-4 col-md-offset-4">
 		<?php echo form_open('', array('class' => 'well'));?>
-			<?php echo form_fieldset('Modifier un stagiaire');?>
+			<?php echo form_fieldset('Modifier une depense');?>
 			
 			<div class = "form-group">
 				<?php echo form_label('libellé du conge : <b class = "text-danger">*</b>', 'conge_lib');?>
